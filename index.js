@@ -5,18 +5,22 @@ let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${api
 axios.get(apiUrl).then(displayWeather);
 
 function displayWeather(response) {
-  let showTemperature = document.querySelector(".current-temperature-value");
+  let showTemperature = document.querySelector(".temperature-value");
   let temperature = Math.round(response.data.temperature.current);
 
-  let currentIcon = document.querySelector(".current-temperature-icon");
+  let currentIcon = document.querySelector("#icon");
   let conditionUrl = response.data.condition.icon_url;
 
-  let showCity = document.querySelector(".current-city");
+  let currentDescription = document.querySelector("#description");
+  let apiDescription = response.data.condition.description;
+
+  let showCity = document.querySelector("#city-name");
   let apiCity = response.data.city;
 
-  let showHumidity = document.querySelector("#humidity");
-  let showWind = document.querySelector("#wind");
+  let showHumidity = document.querySelector(".humidity-value");
+  let showWind = document.querySelector(".wind-speed-value");
 
+  currentDescription.innerHTML = toTitleCase(`${apiDescription}`);
   currentIcon.innerHTML = `<img src="${conditionUrl}" alt="Weather icon" />`;
   showTemperature.innerHTML = `${temperature}`;
   showCity.innerHTML = `${apiCity}`;
@@ -29,6 +33,15 @@ function search(event) {
   let cityElement = searchInputElement.value;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityElement}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
+}
+
+function toTitleCase(str) {
+  if (!str) return "";
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 
 function formatDate(date) {
