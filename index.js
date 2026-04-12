@@ -10,6 +10,8 @@ function displayWeather(response) {
 
   let currentIcon = document.querySelector("#icon");
   let conditionUrl = response.data.condition.icon_url;
+  currentIcon.style.width = "100px";
+  currentIcon.style.height = "auto";
 
   let currentDescription = document.querySelector("#description");
   let apiDescription = response.data.condition.description;
@@ -45,17 +47,9 @@ function toTitleCase(str) {
 }
 
 function formatDate(date) {
-  let minutes = date.getMinutes();
-  let hours = date.getHours();
   let day = date.getDay();
-
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
+  let month = date.getMonth();
+  let dateOfMonth = date.getDate();
 
   let days = [
     "Sunday",
@@ -66,9 +60,36 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
   let formattedDay = days[day];
-  return `${formattedDay} ${hours}:${minutes}`;
+  let formattedMonth = months[month];
+  return `${formattedDay},   ${formattedMonth} ${dateOfMonth}`;
+}
+
+function formatTime(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  return `${hours}:${minutes}`;
 }
 
 let searchForm = document.querySelector("#search-form");
@@ -77,4 +98,6 @@ searchForm.addEventListener("submit", search);
 let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
 
+let currentTimeElement = document.querySelector("#current-time");
+currentTimeElement.innerHTML = formatTime(currentDate);
 currentDateELement.innerHTML = formatDate(currentDate);

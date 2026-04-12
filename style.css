@@ -44,3 +44,20 @@ header {
   padding: 15px;
   border-radius: 5px;
 }
+
+#current-date,
+#current-time,
+#temperature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#temperature {
+  font-size: 70px;
+}
+#icon {
+  width: 100px !important;
+  height: auto;
+  background-size: 32px 32px;
+}
