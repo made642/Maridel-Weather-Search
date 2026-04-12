@@ -3,46 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Maridel Weather App Homework</title>
   </head>
   <body>
-    <header>
-      <form id="search-form">
-        <input type="text" id="city-input" placeholder="Enter city name" />
-        <button type="submit">Search</button>
-      </form>
-    </header>
-    <h1 id="city-name">City Name</h1>
-    <main>
-      <div id="weather-info">
-        <h2 id="icon">icon</h2>
-        <p id="weather-date">Today's date</p>
-        <p id="temperature">Temperature: --°C</p>
-        <div>
-          <p id="description">Weather description</p>
+    <div class="weather-app">
+      <header>
+        <form id="search-form">
+          <input type="text" id="city-input" placeholder="Enter city name" />
+          <button type="submit" id="search-button">Search</button>
+        </form>
+      </header>
+      <h1 id="city-name">City Name</h1>
+      <main>
+        <div id="weather-info">
+          <h2 id="icon">icon</h2>
+          <p id="weather-date">Today's date</p>
+          <p id="temperature">Temperature: --°C</p>
+          <div id="weather-details">
+            <div>
+              <p id="description">Weather description</p>
+            </div>
+            <div>
+              <p id="humidity">Humidity: --%</p>
+            </div>
+            <div>
+              <p id="wind-speed">Wind Speed: -- km/h</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <p id="humidity">Humidity: --%</p>
-        </div>
-        <div>
-          <p id="wind-speed">Wind Speed: -- km/h</p>
-        </div>
-      </div>
-    </main>
+      </main>
 
-    <footer>
-      This project was coded by
-      <a href="https://github.com/MaridelCanada" target="_blank"
-        >Maridel Canada</a
-      >
-      and is on
-      <a href="https://github.com/MaridelCanada" target="_blank">GitHub</a> and
-      hosted on
-      <a
-        href="https://another-weather-app-by-maridel.netlify.app/"
-        target="_blank"
-        >Netlify</a
-      >
-    </footer>
+      <footer>
+        This project was coded by
+        <a href="https://github.com/MaridelCanada" target="_blank"
+          >Maridel Canada</a
+        >
+        and is on
+        <a href="https://github.com/MaridelCanada" target="_blank">GitHub</a>
+        and hosted on
+        <a
+          href="https://another-weather-app-by-maridel.netlify.app/"
+          target="_blank"
+          >Netlify</a
+        >
+      </footer>
+    </div>
   </body>
+  <script src="index.js"></script>
 </html>
