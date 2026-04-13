@@ -50,9 +50,17 @@ header {
   background-color: #1d1f49;
 }
 
+h1 {
+  margin: 30px;
+  filter: drop-shadow(0 0 50px rgb(252, 249, 250));
+}
 icon {
   width: 500px;
   height: 500px;
+  filter: drop-shadow(0 0 100px rgb(252, 249, 250));
+  background-image: no-repeat;
+  background-size: contain;
+  transform: scale(1.7);
 }
 
 #weather-info {
@@ -60,6 +68,7 @@ icon {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  filter: drop-shadow(0 0 50px rgb(252, 249, 250));
 }
 
 #temperature {
@@ -76,7 +85,7 @@ icon {
   margin: 5px 0;
   font-weight: lighter;
   opacity: 0.7;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(0 0 50px rgb(252, 249, 250));
 }
 
 #weather-details {
