@@ -20,23 +20,24 @@
       <main>
         <div id="weather-container">
           <div id="weather-info">
-            <h2 id="icon">icon</h2>
-            <p id="current-date">Today's date</p>
+            <icon id="icon"></icon>
+            <p id="current-date"></p>
             <p id="current-time"></p>
             <p id="temperature"><span class="temperature-value">--</span>°C</p>
           </div>
           <div id="weather-details">
-            <div>
+            <div class="weather-detail">
+              <h6>Description</h6>
               <p id="description">Weather description</p>
             </div>
-            <div>
-              <p id="humidity">
-                Humidity: <span class="humidity-value">--</span>%
-              </p>
+            <div class="weather-detail">
+              <h6>Humidity</h6>
+              <p id="humidity"><span class="humidity-value">--</span>%</p>
             </div>
-            <div>
+            <div class="weather-detail">
+              <h6>Wind Speed</h6>
               <p id="wind-speed">
-                Wind Speed: <span class="wind-speed-value">--</span> km/h
+                <span class="wind-speed-value">--</span> km/h
               </p>
             </div>
           </div>

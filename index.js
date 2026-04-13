@@ -22,6 +22,10 @@ function displayWeather(response) {
   let showHumidity = document.querySelector(".humidity-value");
   let showWind = document.querySelector(".wind-speed-value");
 
+  let timeElement = document.querySelector("#current-time");
+  let cityTime = new Date(response.data.time * 1000);
+
+  timeElement.innerHTML = formatTime(cityTime);
   currentDescription.innerHTML = toTitleCase(`${apiDescription}`);
   currentIcon.innerHTML = `<img src="${conditionUrl}" alt="Weather icon" />`;
   showTemperature.innerHTML = `${temperature}`;
@@ -31,7 +35,7 @@ function displayWeather(response) {
 }
 function search(event) {
   event.preventDefault();
-  let searchInputElement = document.querySelector("#search-input");
+  let searchInputElement = document.querySelector("#city-input");
   let cityElement = searchInputElement.value;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityElement}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
@@ -95,9 +99,11 @@ function formatTime(date) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
-
+let currentDateELement = document.querySelector("#current-date");
 let currentTimeElement = document.querySelector("#current-time");
-currentTimeElement.innerHTML = formatTime(currentDate);
 currentDateELement.innerHTML = formatDate(currentDate);
+currentTimeElement.innerHTML = formatTime(currentDate);
+
+let searchNowButton = document.querySelector("button");
+searchNowButton.addEventListener("click", displayWeather);

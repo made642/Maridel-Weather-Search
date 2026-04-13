@@ -1,7 +1,6 @@
 body {
   background-color: #f0f0f0;
-  margin: 0;
-  padding: 20px;
+  font-family: "delius swash caps", cursive;
 }
 
 .weather-app {
@@ -23,7 +22,7 @@ header {
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 #city-input {
   background-color: #f0f0f0;
@@ -31,33 +30,88 @@ header {
   color: #04092e;
   font-size: 12px;
   padding: 15px;
-  width: 50%;
+  width: 55%;
   border-radius: 6px;
 }
 #search-button {
   margin-left: 5px;
   font-family: "delius swash caps", cursive;
   font-size: 12px;
-  background-color: #38acff;
+  background-color: #38abff;
   color: #f9f5f6;
-  border: 2px solid #38acff;
+  border: 2px solid #38abff;
   padding: 15px;
   border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#search-button:hover {
+  opacity: 0.9;
+  background-color: #1d1f49;
 }
 
-#current-date,
-#current-time,
-#temperature {
+icon {
+  width: 500px;
+  height: 500px;
+}
+
+#weather-info {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 #temperature {
-  font-size: 70px;
+  font-size: 80px;
+  color: white;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  font-weight: 900;
 }
-#icon {
-  width: 100px !important;
-  height: auto;
-  background-size: 32px 32px;
+#current-date,
+#current-time {
+  font-size: 18px;
+  color: #f0f0f0;
+  margin: 5px 0;
+  font-weight: lighter;
+  opacity: 0.7;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#weather-details {
+  font-size: 20px;
+  color: #f0f0f0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  justify-content: center;
+}
+
+.weather-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: #1d1f49;
+  align-items: center;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.weather-detail h6 {
+  margin: 10px 0 5px;
+  color: #f0f0f0;
+  font-weight: lighter;
+  opacity: 0.7;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #f0f0f0;
+}
+a {
+  color: #38abff;
+  text-decoration: none;
 }
