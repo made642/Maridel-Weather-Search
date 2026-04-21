@@ -105,38 +105,41 @@ let currentTimeElement = document.querySelector("#current-time");
 currentDateELement.innerHTML = formatDate(currentDate);
 currentTimeElement.innerHTML = formatTime(currentDate);
 
-let searchNowButton = document.querySelector("button");
-searchNowButton.addEventListener("click", displayWeather);
+function forecastDays(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
 
-function displayForecast() {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+function getForecast(city) {
+  let apiKey = "ao8ce12baa0at03effcb000a09841c63";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
   let forecastHtml = "";
-  days.forEach(function (day, index) {
-    if (index > 4) return; // Show only the next 5 days   {
+  response.data.daily.forEach(function (day, index) {
+    if (index > 4) return;
     forecastHtml =
       forecastHtml +
       `
       <div class="weather-forecast-day">
-        <div class="weather-forecast-date">${day}</div>
-        <div class="weather-forecast-icon">🌤️</div>
+        <div class="weather-forecast-date">${forecastDays(day.time)}</div>
+        <div class="weather-forecast-icon">
+          <img src="${day.condition.icon_url}" alt="${day.condition.description}" />
+        </div>
         <div class="weather-forecast-temperatures">
           <div class="weather-forecast-temperature">
-            <strong>15°C</strong>
+            <strong>${Math.round(day.temperature.maximum)}°C</strong>
+          </div>
+          <div class="weather-forecast-temperature">${Math.round(day.temperature.minimum)}°C</div>
         </div>
-        <div class="weather-forecast-temperature">10°C</div>
-       </div>
-    </div>`;
+      </div>`;
   });
   let forecastElement = document.querySelector("#weather-forecast");
   forecastElement.innerHTML = forecastHtml;
 }
-
-displayForecast();
+let searchNowButton = document.querySelector("button");
+searchNowButton.addEventListener("click", displayWeather);
+getForecast(city);
