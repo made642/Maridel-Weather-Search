@@ -107,3 +107,36 @@ currentTimeElement.innerHTML = formatTime(currentDate);
 
 let searchNowButton = document.querySelector("button");
 searchNowButton.addEventListener("click", displayWeather);
+
+function displayForecast() {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let forecastHtml = "";
+  days.forEach(function (day, index) {
+    if (index > 4) return; // Show only the next 5 days   {
+    forecastHtml =
+      forecastHtml +
+      `
+      <div class="weather-forecast-day">
+        <div class="weather-forecast-date">${day}</div>
+        <div class="weather-forecast-icon">🌤️</div>
+        <div class="weather-forecast-temperatures">
+          <div class="weather-forecast-temperature">
+            <strong>15°C</strong>
+        </div>
+        <div class="weather-forecast-temperature">10°C</div>
+       </div>
+    </div>`;
+  });
+  let forecastElement = document.querySelector("#weather-forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
+displayForecast();
